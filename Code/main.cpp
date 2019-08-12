@@ -189,8 +189,6 @@ float CalcAngleBetweenLineSegments(LineSegment linesegmentl, LineSegment lineseg
 void TestGetSubPolygon();
 void printVector(vector<int>);
 
-// page 3
-
 
 void printIntList(list<int> mylntList);
 list<int> vectorIntToIntList(vector<int> intVector);
@@ -320,9 +318,6 @@ int main()
 		vector<vector<int>> m3(30, vector<int>(30));
 		drawClockWisePolygon(nonConvexPolyExample, m3, mth);
 
-
-		//Page 5
-
 		printAnyMatXY(m3);
 
 		vector<vector<int>> m4(30, vector<int>(30));
@@ -385,10 +380,6 @@ int main()
 	for (int i = 0; i < convexColors.size(); i++)
 	{
 		convexColors[i] = (convexVertices[i] ? 2 : 1); // 2 for convex vertex, 1 for non-convex vertex.
-
-
-													   //Page 6
-
 	}
 
 	drawPolygon(nonConvexPolyExample, m11, convexColors);
@@ -447,10 +438,6 @@ int main()
 		pointsFlippedPolygonIndices[(pointsFlippedPolygonIndices.size() - i) % pointsFlippedPolygonIndices.size()] = i;
 	}
 	for (int i = 0; i < pointsFlippedPolygonIndices.size(); i++)
-
-
-		//Page 7
-
 	{
 		cout << pointsFlippedPolygonIndices[i] << ",";
 	}
@@ -517,9 +504,6 @@ int main()
 		low = 0;
 		high = vRotated.size() - 1;
 
-
-		//Page 8
-
 		int Rindex = -1;
 
 		while (low < high)
@@ -584,9 +568,6 @@ int main()
 		cout << endl << "R = " << R << ": {Rotatedlndex, vRotated[Rotatedindex]} = { " << Rindex << "," << vRotated[Rindex] << " }" << endl;
 		cout << endl << "{index, vRotated[index]} = {" << index << "," << vRotated[index] << "}" << endl;
 	}
-
-
-	// Page 9
 
 	cout << "Suduku" << endl;
 
@@ -654,8 +635,6 @@ int main()
 	SetValue(mat, 0, N - 1, 0, N - 1, NO);
 	SetVisited(mat, 0, N - 1, 0, N - 1, WHITE);
 	SetParent(mat, 0, N - 1, 0, N - 1, -1, -1);
-
-	//Page 10
 
 	// Create Specific Scenario
 	SetValue(mat, 2, 5, 1, 1, YES);
@@ -725,10 +704,6 @@ void printMatParent(Mat mat[][N])
 		cout << endl;
 	}
 
-
-
-	//Page 11
-
 	cout << endl << "Mat Parent col:" << endl;
 	for (int i = 0; i < N; i++)
 	{
@@ -796,10 +771,6 @@ void SetValue(Mat mat[][N], int rowstart, int rowEnd, int colstart, int colEnd, 
 			mat[i][j].value = value;
 
 	}
-
-
-	//Page 12
-
 }
 
 
@@ -863,8 +834,6 @@ void BFS(Mat mat[][N], int SourceRow, int SourceCol)
 
 
 void printBFS(Mat matorigional[][N], int sourceRow, int sourceCol, int destRow, int destCol)
-
-//Page 13
 
 {
 	Mat matPrint[N][N]; // preserving original mat (not destroying)
@@ -934,8 +903,6 @@ bool isLegal(int a[][9], int x, int y, int num)
 		}
 	}
 
-	//Page 14
-
 	return true;
 }
 
@@ -1004,10 +971,6 @@ void drawCircle(int a, int b, int r, vector<vector<int>> & mat, int value)
 	{
 		// choose y
 		// int y = b+i;
-
-
-		//Page 15
-
 		// find x given y,a,b,r:
 		// (x-a)A2 + (y-b)A2 = rA2 ==> x = round{ a (+-)sqrt(rA2-(y-b)A2) }, y = round{ b (+-)sqrt(rA2-(x-a)A2) } 
 		double semi = sqrt(r*r - i * i);
@@ -1074,10 +1037,6 @@ void drawLine(int x1, int x2, int y1, int y2, vector<vector<int>> & mat, int val
 	{
 		// Decide next point of line.
 		if (sinAlphaSquared == 1)
-
-
-			//Page 16
-
 		{
 			curY += d;
 		}
@@ -1146,9 +1105,6 @@ void drawPolygon(Polygon & poly, vector<vector<int>> & mat, vector<float> value)
 
 	for (int i = 0; i < PolySize; i++)
 	{
-
-		//Page 17
-
 		// Extract pair of points that construct a line 
 		Point2D pl = poly.points2D[i];
 		Point2D p2 = poly.points2D[(i + 1) % PolySize];
@@ -1214,8 +1170,6 @@ int InOutPolygon(int x, int y, Polygon poly)
 	int a1 = bbox.a1;
 	int b0 = bbox.b0;
 	int b1 = bbox.b1;
-
-	//Page 18
 
 	if (x<a0 || x>a1 || y<b0 || y>b1)
 	{
@@ -1283,7 +1237,6 @@ LineFormula getLineFormula(float x1, float y1, float x2, float y2)
 
 	Ax2 + By2 + C = 0
 	------------------
-	//Page 19
 
 	A(x1-x2) + B(y1-y2) + C - C = 0
 	A(x1-x2) + B(y1-y2) = 0
@@ -1356,8 +1309,6 @@ int InOutTriangule(Triangule triangule, Point2D pQuery)
 
 		||
 
-		//Page 20
-
 		(abs(signQuery02) <= epsilon02 && pQuery.x >=
 			min(triangule.points2D[0].x, triangule.points2D[2].x) && pQuery.x <=
 			max(triangule.points2D[0].x, triangule.points2D[2].x) && pQuery.y >=
@@ -1423,11 +1374,7 @@ bool isOnLineSegment(Point2D p1, Point2D p2, Point2D pQuery)
 {
 	LineFormula lineEq01 = getLineFormula(p1.x, p1.y, p2.x, p2.y);
 
-	float signQuery = lineEq01.A*pQuery.x + lineEq01.B*pQuery.y +
-
-		//Page 21
-
-		lineEq01.C;
+	float signQuery = lineEq01.A*pQuery.x + lineEq01.B*pQuery.y + lineEq01.C;
 
 	float epsilon = (abs(lineEq01.A) + abs(lineEq01.B)) / 2;
 
@@ -1494,8 +1441,6 @@ void drawCounterClockWisePolygon(Polygon poly, vector<vector<int>> & mat, int Me
 
 	}
 }
-//Page 22
-
 
 
 // Returning Counter Clock wise angle from line 1 to line 2.
@@ -1562,11 +1507,7 @@ void TestGetSubPolygon()
 
 	try
 	{
-		Polygon subPolygon = nonConvexPolyExample.GetSubPolygon({ -1, 2,
-
-			//Page 23
-
-			3 });
+		Polygon subPolygon = nonConvexPolyExample.GetSubPolygon({ -1, 2, 3 });
 		const char* s = subPolygon.IsConcavePolygon() ? "false" : "true";
 		cout << "IsConcavePolygon = " << s << endl;
 	}
@@ -1634,8 +1575,6 @@ vector<int> listIntToVectorList(list<int> intList)
 
 	for (list<int>::iterator it = intList.begin(); it != intList.end(); it++)
 	{
-		//Page 24
-
 		intVector[i] = *it;
 		i++;
 	}
@@ -1700,10 +1639,6 @@ void TestPolygonTriangulation()
 												{ { 3,  5 },{ 4, 26 },{ 13,  24 },{ 27,  28 },{ 17,  11 },{ 17, 2 },{ 10,  3 } },
 												{ { 674,   285 },{ 635,  325 },{ 600,  147 },{ 563, 324 },{ 631, 145 },{ 505,  328 },{ 442,  152 },{ 440,  375 },{ 336,  336 },{ 402,  417 },{ 458,  450 },{ 473,  575 },{ 656,  564 },{ 655,  350 } },
 												//{{}, 11, fl, fl, fl, 0, {} 1
-
-
-												//Page 25
-
 												//{{}, {},  0,  {}, {}, {}, {} 1
 												//{{}, fl,  {}, {}, {}, 0,  {} }
 	};
@@ -1767,8 +1702,6 @@ void drawMultiplePolygons(vector<Polygon> polygonsVector, vector<vector<int>>& m
 	//printAnymatxY(mat);
 }
 
-
-//Page 26
 
 vector<Point2D> translate(vector<Point2D> vectPoints2D, Point2D move)
 {
@@ -1837,10 +1770,6 @@ float Polygon::SumOfExteriosAngles(int DegRad)
 	float straightLineAngle;
 	if (DegRad == 1)
 	{ // degrees
-
-
-	  //Page 27
-
 		straightLineAngle = 180;
 	}
 	else
@@ -1906,8 +1835,6 @@ bool Polygon::IsClockWise(int Method)
 	}
 
 
-	//Page 28
-
 	// Method 2 - Based on finding most buttom vertex and routing to the most right vertex.
 	if (Method == 2)
 	{
@@ -1969,9 +1896,6 @@ bool Polygon::IsClockWise(int Method)
 	float epsilonQuantizationError = 0.01*polySize; // Instead of cheking if sumPolyAngles == Sum0finteriorAngles()
 	if (abs(sumPolyAngles - SumOfInteriorAngles()) < epsilonQuantizationError)
 	{
-
-		//Page 29
-
 		return false; // counter clock wise order
 	}
 	return true;
@@ -2037,9 +1961,6 @@ int Polygon::GetRightmostVertexIndex(int pointIndex)
 	// (pointindex - 1 + points2D.size()) % points2D.size() in order to get (-1 + 7) % 7 = 6 and not - 1 % 7 = -1
 	LineSegment line2({ points2D[pointIndex], points2D[(pointIndex - 1 + points2D.size()) % points2D.size()] });
 
-
-	//Page 30
-
 	float angle1 = CalcAngleBetweenLineSegments(lineSegmentXAxis, line1); // calc angle against X axis
 	float angle2 = CalcAngleBetweenLineSegments(lineSegmentXAxis, line2); // calc angle against X axis
 
@@ -2099,9 +2020,6 @@ vector<bool> Polygon::ConvexVertices()
 	}
 
 	return convexVertices;
-
-	//Page 31
-
 }
 
 
@@ -2169,9 +2087,6 @@ bool Polygon::IsConvexPolygon()
 		{
 			return false; // There is a concave (non-convex) vertex.
 		}
-
-		//Page 32
-
 	}
 
 	return true; // if we reach here, then all vertices are convex (non-concave).
@@ -2239,10 +2154,6 @@ Polygon Polygon::GetSubPolygon(vector<int> points2DIndices)
 {
 	if (points2DIndices.size() > points2D.size())
 	{
-
-
-		//Page 33
-
 		throw exception("GetSubPolygon() construction failure");
 	}
 
@@ -2307,10 +2218,6 @@ vector<Triangule> Polygon::PolygonTriangulation()
 	vector<float> polygonAngles = CalcPolygonAngles();
 
 	while (remainingPointsIndicesList.size() >= 3)
-
-
-		//Page 34
-
 	{
 		//convexconcaveindices convexAndconcaveindices = GetConvexConcaveIndices();
 		//list<int> convexindices = vectorIntToIntList(convexAndconcaveIndices.ConvexIndices);
@@ -2367,9 +2274,6 @@ vector<Triangule> Polygon::PolygonTriangulation()
 
 				for (list<int>::iterator it2 = remainingPointsIndicesList.begin();
 					it2 != remainingPointsIndicesList.end()
-
-					//Page 35
-
 					&& isAnEar;
 					it2++)
 				{
@@ -2423,7 +2327,3 @@ vector<Triangule> Polygon::PolygonTriangulation()
 
 }
 
-
-
-
-//Page 36
