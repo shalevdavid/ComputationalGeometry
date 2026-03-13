@@ -3,6 +3,7 @@
 #include <stack> 
 #include <queue> 
 #include <algorithm>
+#include <cmath>
 
 /*#include <math.h>
 #define _USE_MATH_DEFINES*/
@@ -2154,7 +2155,7 @@ Polygon Polygon::GetSubPolygon(vector<int> points2DIndices)
 {
 	if (points2DIndices.size() > points2D.size())
 	{
-		throw exception("GetSubPolygon() construction failure");
+		throw std::runtime_error("GetSubPolygon() construction failure");
 	}
 
 	vector<Point2D> subPolygonPoints2D(points2DIndices.size());
@@ -2162,7 +2163,7 @@ Polygon Polygon::GetSubPolygon(vector<int> points2DIndices)
 	{
 		if (points2DIndices[i] >= points2D.size() || points2DIndices[i] < 0)
 		{
-			throw exception("GetSubPolygon() construction failure");
+			throw std::runtime_error("GetSubPolygon() construction failure");
 		}
 		subPolygonPoints2D[i] = points2D[points2DIndices[i]];
 	}
